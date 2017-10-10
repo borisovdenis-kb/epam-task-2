@@ -131,40 +131,6 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         last = null;
     }
 
-    public <E> FilteredLinkedList<E> map(MapInterface<T, E> mapInterface) {
-        FilteredLinkedList<E> newList = new FilteredLinkedList<>(x -> false);
-        Iterator<T> itr = iterator();
-
-        while (itr.hasNext()) {
-            try {
-                E next = mapInterface.map(itr.next());
-                newList.addLast(next);
-            } catch (NoSuchElementException e) {
-                return newList;
-            }
-        }
-        return newList;
-    }
-
-    public T reduce(ReduceInterface<T> reduceIntr) {
-        Iterator<T> itr = iterator();
-
-        if (size == 1)
-            return itr.next();
-
-        T result = null;
-        try {
-            result = reduceIntr.reduce(itr.next(), itr.next());
-            while (itr.hasNext()) {
-                result = reduceIntr.reduce(result, itr.next());
-            }
-        } catch (NoSuchElementException e) {
-            return result;
-        }
-
-        return result;
-    }
-
     /**
      * Is needed inside FilteredIterator. And SimpleIterator.
      */
