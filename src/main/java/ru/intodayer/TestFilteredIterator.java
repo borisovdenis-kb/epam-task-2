@@ -1,9 +1,10 @@
 package ru.intodayer;
 
-import ru.intodayer.List.FilteredCustomList;
-
-import java.util.Arrays;
+import ru.intodayer.customlist.FilteredCustomList;
+import ru.intodayer.customlist.CustomList;
 import java.util.function.Predicate;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class TestFilteredIterator {
@@ -15,9 +16,9 @@ public class TestFilteredIterator {
         return filter;
     }
 
-    private <T> void assertEquals(T[] expected, FilteredCustomList<T> actual) {
+    private <T> void assertEquals(T[] expected, CustomList<T> actual) {
         int index = 0;
-        for (T x : actual) {
+        for (T x : (FilteredCustomList<T>) actual) {
             if (expected == null) {
                 if (x != null)
                     throw new TestFailedException(
@@ -35,7 +36,7 @@ public class TestFilteredIterator {
 
     private void testCase1() {
         Predicate<String> filter = getPredicate("Haskel", "PHP", "Fortran");
-        List<String> list = new FilteredCustomList<String>(filter);
+        CustomList<String> list = new FilteredCustomList<>(filter);
         list.addLast("Fortran");
         list.addLast("Java");
         list.addLast("C++");
@@ -49,7 +50,7 @@ public class TestFilteredIterator {
 
     private void testCase2() {
         Predicate<Integer> filter = getPredicate(1, 5, 100);
-        FilteredCustomList<Integer> list = new FilteredCustomList<>(filter);
+        CustomList<Integer> list = new FilteredCustomList<>(filter);
         list.addLast(1);
         list.addLast(5);
         list.addLast(100);

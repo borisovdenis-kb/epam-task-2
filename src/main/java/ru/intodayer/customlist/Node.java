@@ -1,4 +1,4 @@
-package ru.intodayer.List;
+package ru.intodayer.customlist;
 
 
 public class Node<T> {

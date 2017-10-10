@@ -1,4 +1,4 @@
-package ru.intodayer.List;
+package ru.intodayer.customlist;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
