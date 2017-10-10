@@ -1,6 +1,6 @@
 package ru.intodayer;
 
-import ru.intodayer.List.FilteredLinkedList;
+import ru.intodayer.List.FilteredList;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +16,7 @@ public class TestFilteredIterator {
         return filter;
     }
 
-    private <T> void assertEquals(T[] expected, FilteredLinkedList<T> actual) {
+    private <T> void assertEquals(T[] expected, FilteredList<T> actual) {
         int index = 0;
         for (T x : actual) {
             if (expected == null) {
@@ -36,7 +36,7 @@ public class TestFilteredIterator {
 
     private void testCase1() {
         Predicate<String> filter = getPredicate("Haskel", "PHP", "Fortran");
-        FilteredLinkedList<String> list = new FilteredLinkedList<>(filter);
+        FilteredList<String> list = new FilteredList<>(filter);
         list.addLast("Fortran");
         list.addLast("Java");
         list.addLast("C++");
@@ -50,7 +50,7 @@ public class TestFilteredIterator {
 
     private void testCase2() {
         Predicate<Integer> filter = getPredicate(1, 5, 100);
-        FilteredLinkedList<Integer> list = new FilteredLinkedList<>(filter);
+        FilteredList<Integer> list = new FilteredList<>(filter);
         list.addLast(1);
         list.addLast(5);
         list.addLast(100);

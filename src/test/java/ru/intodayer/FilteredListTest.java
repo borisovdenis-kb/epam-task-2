@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 
-class FilteredLinkedListTest {
+class FilteredListTest {
     private void checkLinks(FilteredLinkedList<?> filteredLinkedList) {
         /* check of next links */
         try {
