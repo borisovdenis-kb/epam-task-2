@@ -1,11 +1,11 @@
-package ru.intodayer;
+package ru.intodayer.List;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
 
-public class FilteredLinkedList<T> implements Iterable<T> {
+public class FilteredLinkedList<T> implements List<T>, Iterable<T> {
     private Node<T> first;
     private Node<T> last;
     private Predicate<T> condition;
@@ -18,22 +18,27 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         this.condition = condition;
     }
 
+    @Override
     public boolean isEmpty() {
         return first == null;
     }
 
+    @Override
     public int getSize() {
         return size;
     }
 
+    @Override
     public Node<T> getFirst() {
         return first;
     }
 
+    @Override
     public Node<T> getLast() {
         return last;
     }
 
+    @Override
     public void addFirst(T data) {
         Node<T> newNode = new Node<T>(data);
         if (first == null) {
@@ -50,6 +55,7 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         size++;
     }
 
+    @Override
     public void addLast(T data) {
         Node<T> newNode = new Node<T>(data);
         if (last == null) {
@@ -66,6 +72,7 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         size++;
     }
 
+    @Override
     public void addBefore(T key, T data) {
         Node<T> newNode = new Node<T>(data);
         Node<T> current = first;
@@ -85,6 +92,7 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         size++;
     }
 
+    @Override
     public Node<T> deleteFirst() {
         Node<T> tmp = first;
         if (last == first) {
@@ -98,6 +106,7 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         return tmp;
     }
 
+    @Override
     public Node<T> deleteLast() {
         Node<T> tmp = last;
         if (last == first) {
@@ -111,6 +120,7 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         return tmp;
     }
 
+    @Override
     public Node<T> delete(T key) {
         for (Node<T> x = first; x != null; x = x.next) {
             if (x.getData().equals(key)) {
@@ -129,6 +139,7 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         return null;
     }
 
+    @Override
     public void clear() {
         first = null;
         last = null;
@@ -197,6 +208,7 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         }
     }
 
+    @Override
     public Iterator<T> iterator() {
         return new FilteredIterator();
     }

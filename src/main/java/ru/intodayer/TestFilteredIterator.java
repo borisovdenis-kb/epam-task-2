@@ -1,5 +1,7 @@
 package ru.intodayer;
 
+import ru.intodayer.List.FilteredLinkedList;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
