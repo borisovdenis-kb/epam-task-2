@@ -12,6 +12,9 @@ public class FilteredLinkedList<T> implements Iterable<T> {
     private int size;
 
     public FilteredLinkedList(Predicate<T> condition) {
+        if (condition == null)
+            throw new IllegalArgumentException("Predicate can't be null.");
+
         this.condition = condition;
     }
 
