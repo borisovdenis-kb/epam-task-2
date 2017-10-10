@@ -5,13 +5,13 @@ import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
 
-public class FilteredList<T> implements List<T>, Iterable<T> {
+public class FilteredCustomList<T> implements CustomList<T>, Iterable<T> {
     private Node<T> first;
     private Node<T> last;
     private Predicate<T> condition;
     private int size;
 
-    public FilteredList(Predicate<T> condition) {
+    public FilteredCustomList(Predicate<T> condition) {
         if (condition == null)
             throw new IllegalArgumentException("Predicate can't be null.");
 

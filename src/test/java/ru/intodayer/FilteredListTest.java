@@ -39,12 +39,12 @@ class FilteredListTest {
 //    void testIterator() {
 //        Predicate<Integer> conditionOne = (x) -> {
 //            Integer[] array = {1, 5, 9};
-//            List<Integer> notAllowed = Arrays.asList(array);
+//            CustomList<Integer> notAllowed = Arrays.asList(array);
 //            return notAllowed.contains(x);
 //        };
 //        Predicate<String> conditionTwo = (x) -> {
 //            String[] array = {"PHP", "ObjectiveC", "Haskel"};
-//            List<String> notAllowed = Arrays.asList(array);
+//            CustomList<String> notAllowed = Arrays.asList(array);
 //            return notAllowed.contains(x);
 //        };
 //        FilteredLinkedList<Integer> listOne = new FilteredLinkedList<Integer>(conditionOne);

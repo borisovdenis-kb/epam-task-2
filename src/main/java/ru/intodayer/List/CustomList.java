@@ -3,7 +3,7 @@ package ru.intodayer.List;
 import java.util.Iterator;
 
 
-public interface List<T> {
+public interface CustomList<T> {
     boolean isEmpty();
     int getSize();
     Node<T> getFirst();
