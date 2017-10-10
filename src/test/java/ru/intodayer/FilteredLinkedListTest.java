@@ -73,7 +73,7 @@ class FilteredLinkedListTest {
 
     @Test
     void testClear() {
-        FilteredLinkedList<String> filteredLinkedList = new FilteredLinkedList<String>();
+        FilteredLinkedList<String> filteredLinkedList = new FilteredLinkedList<String>(x -> false);
         filteredLinkedList.addFirst("A");
         filteredLinkedList.addFirst("B");
         filteredLinkedList.addFirst("C");
@@ -86,7 +86,7 @@ class FilteredLinkedListTest {
     @Test
     void testDifferentTypes() {
         /* test #1: with String */
-        FilteredLinkedList<String> stringList = new FilteredLinkedList<String>();
+        FilteredLinkedList<String> stringList = new FilteredLinkedList<String>(x -> false);
         stringList.addFirst("A");
         stringList.addLast("B");
         stringList.addBefore("B", "C");
@@ -99,7 +99,7 @@ class FilteredLinkedListTest {
         assertEquals(null, stringList.getLast());
 
         /* test #2: with Integer */
-        FilteredLinkedList<Integer> integerList = new FilteredLinkedList<Integer>();
+        FilteredLinkedList<Integer> integerList = new FilteredLinkedList<Integer>(x -> false);
         integerList.addFirst(1);
         integerList.addLast(2);
         integerList.addBefore(2, 3);
@@ -114,7 +114,7 @@ class FilteredLinkedListTest {
 
     @Test
     void testDeleteFirst() {
-        FilteredLinkedList<String> One = new FilteredLinkedList<String>();
+        FilteredLinkedList<String> One = new FilteredLinkedList<String>(x -> false);
         One.addFirst("Frodo");
         One.addFirst("Aragorn");
         One.addFirst("Gandalf");
@@ -136,14 +136,14 @@ class FilteredLinkedListTest {
         assertEquals(null, One.getLast());
 
         // test4: lack of NullPointerException
-        FilteredLinkedList<String> Two = new FilteredLinkedList<String>();
+        FilteredLinkedList<String> Two = new FilteredLinkedList<String>(x -> false);
         Two.addFirst("Frodo");
         Two.deleteFirst();
     }
 
     @Test
     void testDeleteLast() {
-        FilteredLinkedList<String> One = new FilteredLinkedList<String>();
+        FilteredLinkedList<String> One = new FilteredLinkedList<String>(x -> false);
         One.addFirst("Frodo");
         One.addFirst("Aragorn");
         One.addFirst("Gandalf");
@@ -165,14 +165,14 @@ class FilteredLinkedListTest {
         assertEquals(null, One.getLast());
 
         // test4: lack of NullPointerException
-        FilteredLinkedList<String> Two = new FilteredLinkedList<String>();
+        FilteredLinkedList<String> Two = new FilteredLinkedList<String>(x -> false);
         Two.addFirst("Frodo");
         Two.deleteLast();
     }
 
     @Test
     void testDelete() {
-        FilteredLinkedList<String> filteredLinkedList = new FilteredLinkedList<String>();
+        FilteredLinkedList<String> filteredLinkedList = new FilteredLinkedList<String>(x -> false);
         filteredLinkedList.addFirst("Thor");
         filteredLinkedList.addFirst("Hulk");
         filteredLinkedList.addFirst("Iron Man");
@@ -194,7 +194,7 @@ class FilteredLinkedListTest {
 
     @Test
     void testAddFirst() {
-        FilteredLinkedList<String> listOne = new FilteredLinkedList<String>();
+        FilteredLinkedList<String> listOne = new FilteredLinkedList<String>(x -> false);
         listOne.addFirst("Thor");
         listOne.addFirst("Hulk");
         listOne.addFirst("Iron Man");
@@ -204,7 +204,7 @@ class FilteredLinkedListTest {
 
     @Test
     void testAddBefore() {
-        FilteredLinkedList<String> filteredLinkedList = new FilteredLinkedList<String>();
+        FilteredLinkedList<String> filteredLinkedList = new FilteredLinkedList<String>(x -> false);
         filteredLinkedList.addFirst("Thor");
 
         // test #1: with 1 node [Thor]

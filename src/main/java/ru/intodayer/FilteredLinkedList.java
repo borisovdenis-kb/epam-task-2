@@ -11,19 +11,12 @@ public class FilteredLinkedList<T> implements Iterable<T> {
     private Predicate<T> condition;
     private int size;
 
-    public FilteredLinkedList() {
-    }
-
     public FilteredLinkedList(Predicate<T> condition) {
         this.condition = condition;
     }
 
     public boolean isEmpty() {
         return first == null;
-    }
-
-    public void setCondition(Predicate<T> condition) {
-        this.condition = condition;
     }
 
     public int getSize() {
@@ -139,7 +132,7 @@ public class FilteredLinkedList<T> implements Iterable<T> {
     }
 
     public <E> FilteredLinkedList<E> map(MapInterface<T, E> mapInterface) {
-        FilteredLinkedList<E> newList = new FilteredLinkedList<>();
+        FilteredLinkedList<E> newList = new FilteredLinkedList<>(x -> false);
         Iterator<T> itr = iterator();
 
         while (itr.hasNext()) {
@@ -196,20 +189,8 @@ public class FilteredLinkedList<T> implements Iterable<T> {
         }
     }
 
-    private class SimpleIterator implements Iterator<T> {
-        private Iterator<Node<T>> itr;
-
-        public SimpleIterator() {
-            this.itr = utilityIterator();
-        }
-
-        public boolean hasNext() {
-            return itr.hasNext();
-        }
-
-        public T next() {
-            return itr.next().getData();
-        }
+    private Iterator<Node<T>> utilityIterator() {
+        return new UtilityIterator();
     }
 
     private class FilteredIterator implements Iterator<T> {
@@ -237,22 +218,18 @@ public class FilteredLinkedList<T> implements Iterable<T> {
             }
             curNode = itr.next();
             while (condition.test(curNode.getData())) {
-                curNode = itr.next();
+                try {
+                    curNode = itr.next();
+                } catch (NoSuchElementException e) {
+                    return null;
+                }
             }
             return curNode.getData();
         }
     }
 
     public Iterator<T> iterator() {
-        if (condition == null) {
-            return new SimpleIterator();
-        } else {
-            return new FilteredIterator();
-        }
-    }
-
-    private Iterator<Node<T>> utilityIterator() {
-        return new UtilityIterator();
+        return new FilteredIterator();
     }
 
     @Override
